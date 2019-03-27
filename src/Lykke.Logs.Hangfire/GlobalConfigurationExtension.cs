@@ -8,6 +8,7 @@ namespace Lykke.Logs.Hangfire
 {
     public static class GlobalConfigurationExtension
     {
+        [PublicAPI]
         public static IGlobalConfiguration<LykkeLogProvider> UseLykkeLogProvider(
             [NotNull] this IGlobalConfiguration configuration,
             [NotNull] IContainer container)
