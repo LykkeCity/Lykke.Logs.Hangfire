@@ -1,5 +1,4 @@
 using System;
-using Hangfire.Logging;
 using JetBrains.Annotations;
 using Lykke.Common.Log;
 
@@ -23,7 +22,7 @@ namespace Lykke.Logs.Hangfire
         }
 
         public bool Log(
-            LogLevel logLevel,
+            HangfireLogLevel logLevel,
             Func<string> messageFunc,
             Exception exception = null)
         {
@@ -73,17 +72,17 @@ namespace Lykke.Logs.Hangfire
         {
             switch (logLevel)
             {
-                case LogLevel.Trace:
+                case HangfireLogLevel.Trace:
                     return LykkeLogLevel.Trace;
-                case LogLevel.Debug:
+                case HangfireLogLevel.Debug:
                     return LykkeLogLevel.Debug;
-                case LogLevel.Info:
+                case HangfireLogLevel.Info:
                     return LykkeLogLevel.Information;
-                case LogLevel.Warn:
+                case HangfireLogLevel.Warn:
                     return LykkeLogLevel.Warning;
-                case LogLevel.Error:
+                case HangfireLogLevel.Error:
                     return LykkeLogLevel.Error;
-                case LogLevel.Fatal:
+                case HangfireLogLevel.Fatal:
                     return LykkeLogLevel.Critical;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(logLevel), logLevel, null);
